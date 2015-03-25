@@ -39,7 +39,12 @@ public class Frontend extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=utf-8");
-        json = getRequestParser(URLDecoder.decode(request.getQueryString(), "UTF-8")); // получение json из get запроса
+        if (request.getQueryString() != null) {
+            json = getRequestParser(URLDecoder.decode(request.getQueryString(), "UTF-8")); // получение json из get запроса
+        } else
+        {
+            json = new JsonObject();
+        }
         if (json.get("code") == null) {
             try {
                 responseResult = delegationCall(request.getRequestURI().split("/"), json);  // делегирование запроса соответствующему классу и методу
@@ -80,6 +85,7 @@ public class Frontend extends HttpServlet {
 
     private String delegationCall (String requestMass[], JsonObject json) throws SQLException {  // функция для делегирования запроса
         if (requestMass.length == 4) {
+           // System.out.println("1");
             if (requestMass[3].equals("clear")) {
                 return general.clear();
             } else if (requestMass[3].equals("status")) {
@@ -89,6 +95,7 @@ public class Frontend extends HttpServlet {
                 return "bad"/*clear()*/;
             }
         } else {
+           // System.out.println(requestMass.length);
             if (requestMass.length > 4) {
                 switch (requestMass[3]) {
                     case "forum":
