@@ -20,4 +20,8 @@ public class General {
         return database.clear();
     }
 
+    public String status() throws SQLException {
+        return database.status();
+    }
+
 }

@@ -82,7 +82,10 @@ public class Frontend extends HttpServlet {
         if (requestMass.length == 4) {
             if (requestMass[3].equals("clear")) {
                 return general.clear();
-            } else {
+            } else if (requestMass[3].equals("status")) {
+                return general.status();
+            }
+            else {
                 return "bad"/*clear()*/;
             }
         } else {
@@ -134,7 +137,7 @@ public class Frontend extends HttpServlet {
     public JsonObject getRequestParser ( String data ) {
         JsonObject jsonObject = new JsonObject();
         String strings[] = data.split("&");
-        ArrayList<String> array = new ArrayList<>();
+        ArrayList<String> array = new ArrayList<String>();
 
         for (int i = 0; i < strings.length; i++) {
             String values[] = strings[i].split("=");

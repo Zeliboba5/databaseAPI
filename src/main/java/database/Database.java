@@ -897,6 +897,39 @@ public class Database {
         return response.toString();
     }
 
+    public String status() throws SQLException {
+        JsonObject response = new JsonObject();
+        response.addProperty("code", 0);
+        //Statement stm = connection.createStatement();
+        PreparedStatement stm = connection.prepareStatement("SELECT COUNT (*) AS count FROM ?");
+        stm.setString(1, "Forum");
+        ResultSet rs = stm.executeQuery();
+        JsonObject responseBody = new JsonObject();
+        responseBody.addProperty("forum", rs.getInt("count"));
+        rs.close();
+        stm.close();
+        stm = connection.prepareStatement("SELECT COUNT (*) AS count FROM ?");
+        stm.setString(1, "User");
+        rs = stm.executeQuery();
+        responseBody.addProperty("user", rs.getInt("count"));
+        rs.close();
+        stm.close();
+        stm = connection.prepareStatement("SELECT COUNT (*) AS count FROM ?");
+        stm.setString(1, "Thread");
+        rs = stm.executeQuery();
+        responseBody.addProperty("thread", rs.getInt("count"));
+        rs.close();
+        stm.close();
+        stm = connection.prepareStatement("SELECT COUNT (*) AS count FROM ?");
+        stm.setString(1, "Post");
+        rs = stm.executeQuery();
+        responseBody.addProperty("post", rs.getInt("count"));
+        rs.close();
+        stm.close();
+        response.add("response", responseBody);
+        return response.toString();
+    }
+
     public String safelyGetStringFromJson(JsonObject json, String name) {
         if (json.get(name) != null) {
             if (json.get(name).toString().equals("null")) {
