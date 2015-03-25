@@ -6,9 +6,7 @@ import database.Database;
 
 import java.sql.SQLException;
 
-/**
- * Created by Abovyan Narek on 01.11.14.
- */
+
 public class General {
     Database database;
     Gson gson;

@@ -5,9 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by Abovyan Narek on 01.11.14.
- */
+
 public class TExecutor {
 
     public <T> T execQuery(Connection connection, String query, TResultHandler<T> handler) throws SQLException {

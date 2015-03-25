@@ -7,9 +7,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
-/**
- * Created by Abovyan Narek on 06.11.14.
- */
+
 public class Main {
 
     public static void main(String args[]) throws Exception{

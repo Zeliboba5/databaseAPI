@@ -11,9 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-/**
- * Created by Abovyan Narek on 06.11.14.
- */
+
 public class Database {
 
     private static final String URL = "jdbc:mysql://localhost:3306/TechDB" + "?useUnicode=true&characterEncoding=UTF-8";

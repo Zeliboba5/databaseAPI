@@ -23,9 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-/**
- * Created by Abovyan Narek on 06.11.14.
- */
+
 public class Frontend extends HttpServlet {
     private Gson gson = new Gson();
     private String responseResult;

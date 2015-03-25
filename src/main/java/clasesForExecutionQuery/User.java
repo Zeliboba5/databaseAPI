@@ -8,9 +8,7 @@ import util.JsonResponse;
 
 import java.sql.SQLException;
 
-/**
- * Created by Abovyan Narek on 01.11.14.
- */
+
 public class User implements GeneralMethods{
 
     Database database;
